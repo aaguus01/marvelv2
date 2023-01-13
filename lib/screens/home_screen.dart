@@ -9,43 +9,48 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Marvel Api Query'),
+        title: const Text('Marvel Api Query'),
         elevation: 0,
         centerTitle: true,
       ),
-      body: MyPagina(),
+      body: myPagina(context),
     );
   }
 
-  Widget MyPagina() {
-    return Container(
-      child: Column(
-        children: <Widget>[
-          Image.asset('assets/marvel-logo2.png'),
-          Container(
-            width: double.infinity,
-            height: 140,
-            color: Colors.black,
-          ),
-          ElevatedButton(
-              child: const Text('Login'),
-              onPressed: () {},
-              style: const ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll<Color>(Colors.red),
-                minimumSize: MaterialStatePropertyAll(const Size(250, 40)),
-              )),
-          ElevatedButton(
-              child: const Text('Register'),
-              onPressed: () {},
-              style: const ButtonStyle(
-                backgroundColor: MaterialStatePropertyAll<Color>(
-                    Color.fromARGB(120, 255, 0, 0)),
-                minimumSize: MaterialStatePropertyAll(const Size(250, 40)),
-              ))
-        ],
-        //mainAxisAlignment: MainAxisAlignment.start,
-      ),
-      color: Color.fromARGB(255, 0, 0, 0),
+  Widget myPagina(BuildContext context) {
+    return Column(
+      //dentro del column metemos las imagenes y los dos botones
+      children: <Widget>[
+        Container(
+          child: Image.asset('assets/marvel-logo2.png'),
+          margin: const EdgeInsets.only(top: 120.0),
+        ),
+        const SizedBox(
+          width: double.infinity,
+          height: 140,
+        ),
+        ElevatedButton(
+            //el del login
+            child: const Text('Login'),
+            onPressed: () {
+              Navigator.of(context).pushNamed('login');
+            },
+            style: const ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll<Color>(Colors.red),
+              minimumSize: MaterialStatePropertyAll(Size(250, 40)),
+            )),
+        ElevatedButton(
+            //el de register
+            child: const Text('Register'),
+            onPressed: () {
+              Navigator.of(context).pushNamed('registrar');
+            },
+            style: const ButtonStyle(
+              backgroundColor: MaterialStatePropertyAll<Color>(
+                  Color.fromARGB(120, 255, 0, 0)),
+              minimumSize: MaterialStatePropertyAll(Size(250, 40)),
+            ))
+      ],
     );
   }
 }
