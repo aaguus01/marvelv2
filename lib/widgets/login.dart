@@ -13,6 +13,7 @@ class _LoginMarvelLoginState extends State<LoginMarvelLogin> {
 
   @override
   Widget build(BuildContext context) {
+    cambiarValores();
     return ListView(
       padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 8.0),
       children: <Widget>[
@@ -30,6 +31,16 @@ class _LoginMarvelLoginState extends State<LoginMarvelLogin> {
         buttonSend()
       ],
     );
+  }
+
+  void cambiarValores() {
+    if (!Preferences.checkRecordar) {
+      _userName = "";
+      _passwd = "";
+    } else {
+      _userName = Preferences.nom;
+      _passwd = Preferences.passwd;
+    }
   }
 
   Widget loginUsuario() {
